@@ -1,6 +1,7 @@
 // ReportForm.js
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import './ReportForm.css';
 import ParameterInput from './ParameterInput'; // Asegúrate de importar el nuevo componente
 
 const dominio = "http://localhost:7007";
@@ -82,7 +83,7 @@ const ReportForm = () => {
 
 
   return (
-    <div>
+    <div className="container">
       <h1>Generar Reporte</h1>
       <form onSubmit={handleSubmit}>
         {/* Seleccionar el reporte */}
@@ -100,17 +101,20 @@ const ReportForm = () => {
 
         {/* Campos dinámicos basados en el reporte seleccionado */}
         {parameters.length > 0 && (
-          <ParameterInput 
-            parameters={parameters} 
-            formData={formData} 
-            handleInputChange={handleInputChange} 
-          />
+          <div>
+            <h3>Llena los parametros</h3>
+            <ParameterInput 
+              parameters={parameters} 
+              formData={formData} 
+              handleInputChange={handleInputChange} 
+            />
+          </div>
         )}
 
         <button type="submit" disabled={!selectedReport}>
           Generar Reporte
         </button>
-        {error && <p style={{ color: 'red' }}>{error}</p>} {/* Mostrar mensaje de error si existe */}
+        {error && <p className="error-message">{error}</p>} {/* Mostrar mensaje de error si existe */}
       </form>
     </div>
   );

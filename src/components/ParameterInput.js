@@ -3,10 +3,9 @@ import React from 'react';
 
 const ParameterInput = ({ parameters, formData, handleInputChange }) => {
   return (
-    <div>
-      <h3>Llena los parámetros:</h3>
+    <div className="parameter-grid">
       {parameters.map((param) => (
-        <div key={param.codigo}>
+        <div key={param.codigo} className="parameter-grid-item">
           <label>{param.etiqueta}:</label>
           <input
             type={
